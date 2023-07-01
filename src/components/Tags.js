@@ -11,7 +11,7 @@ const Tags = () => {
       }}
       horizontal
       showsHorizontalScrollIndicator={false}
-      className="bg-white"
+      className="flex-row bg-white"
     >
       <TagItem title="Dog" />
       <TagItem title="Golden retriever" />

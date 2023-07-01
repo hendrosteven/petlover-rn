@@ -2,17 +2,19 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 axios.defaults.baseURL = "https://dummyapi.io/data/v1";
+axios.defaults.headers = {
+  "app-id": "649fdbf471c86975bb6343f9",
+};
 
 const useAxios = ({ url, method, body = null }) => {
-  const headers = { "app-id": "649fdbf471c86975bb6343f9" };
   const [response, setResponse] = useState(null);
   const [error, setError] = useState("");
   const [loading, setloading] = useState(true);
 
   const fetchData = () => {
-    axios[method](url, headers, JSON.parse(body))
+    axios[method](url, JSON.parse(body))
       .then((res) => {
-        setResponse(res.data);
+        setResponse(res.data.data);
       })
       .catch((err) => {
         setError(err);
@@ -24,7 +26,7 @@ const useAxios = ({ url, method, body = null }) => {
 
   useEffect(() => {
     fetchData();
-  }, [method, url, body, headers]);
+  }, [method, url, body]);
 
   return { response, error, loading };
 };

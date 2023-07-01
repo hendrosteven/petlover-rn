@@ -9,9 +9,24 @@ import {
 import { MagnifyingGlassIcon } from "react-native-heroicons/outline";
 import { Header, Pets, Tags } from "../components/";
 import { useNavigation } from "@react-navigation/native";
+import { useState, useEffect } from "react";
+import useAxios from "../hooks/useAxios";
 
 const HomeScreen = () => {
   const navigation = useNavigation();
+
+  const { response, loading, error } = useAxios({
+    method: "get",
+    url: "/post?limit=10",
+  });
+
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    if (response !== null) {
+      setData(response);
+    }
+  }, [response]);
 
   return (
     <SafeAreaView className="bg-white pt-8">
@@ -26,12 +41,14 @@ const HomeScreen = () => {
       </View>
 
       {/** Body */}
-      <ScrollView showsVerticalScrollIndicator={false} className="bg-gray-200">
-        <Tags />
-        <View className="px-2 pt-2 bg-white">
-          <Pets />
+      <View className="bg-gray-200">
+        <View>
+          <Tags />
         </View>
-      </ScrollView>
+        <View className="px-2 pt-4 bg-white">
+          <Pets records={response} />
+        </View>
+      </View>
     </SafeAreaView>
   );
 };

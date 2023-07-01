@@ -1,46 +1,27 @@
-import { View, ScrollView } from "react-native";
+import { View, ScrollView, FlatList } from "react-native";
 import React from "react";
 import PetCard from "./PetCard";
 
-const Pets = () => {
+const Pets = ({ records }) => {
   return (
     <View className="bg-white">
-      <ScrollView
+      <FlatList
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ paddingVertical: 10 }}
+        data={records}
+        renderItem={({ item }) => (
+          <PetCard
+            id={item.id}
+            image={item.image}
+            likes={item.likes}
+            text={item.text}
+            publishDate={item.publishDate}
+            firstName={item.owner.firstName}
+            lastName={item.owner.lastName}
+            ownerPicture={item.owner.picture}
+          />
+        )}
         className="space-y-2"
-      >
-        <PetCard
-          id="60d21b4667d0d8992e610c85"
-          image="https://img.dummyapi.io/photo-1581804928342-4e3405e39c91.jpg"
-          likes={42}
-          text="Hiking with my dog in the woods. black labrador re..."
-          publishDate="2020-05-23T22:56:11.424Z"
-          firstName="Hendro"
-          lastName="Steven"
-          ownerPicture="https://randomuser.me/api/portraits/med/women/33.jpg"
-        />
-        <PetCard
-          id="60d21b4667d0d8992e610c85"
-          image="https://img.dummyapi.io/photo-1581804928342-4e3405e39c91.jpg"
-          likes={42}
-          text="Hiking with my dog in the woods. black labrador re..."
-          publishDate="2020-05-23T22:56:11.424Z"
-          firstName="Hendro"
-          lastName="Steven"
-          ownerPicture="https://randomuser.me/api/portraits/med/women/33.jpg"
-        />
-        <PetCard
-          id="60d21b4667d0d8992e610c85"
-          image="https://img.dummyapi.io/photo-1581804928342-4e3405e39c91.jpg"
-          likes={42}
-          text="Hiking with my dog in the woods. black labrador re..."
-          publishDate="2020-05-23T22:56:11.424Z"
-          firstName="Hendro"
-          lastName="Steven"
-          ownerPicture="https://randomuser.me/api/portraits/med/women/33.jpg"
-        />
-      </ScrollView>
+      ></FlatList>
     </View>
   );
 };
