@@ -1,19 +1,24 @@
+import React, { useState, useContext } from "react";
 import { HomeScreen, DetailScreen } from "./src/screens";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { AppContext } from "./src/contexts/AppContext";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+  const [path, setPath] = useState("/post?limit=10");
   return (
-    <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={{ headerShown: false }}
-        initialRouteName="Home"
-      >
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Detail" component={DetailScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <AppContext.Provider value={[path, setPath]}>
+      <NavigationContainer>
+        <Stack.Navigator
+          screenOptions={{ headerShown: false }}
+          initialRouteName="Home"
+        >
+          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="Detail" component={DetailScreen} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </AppContext.Provider>
   );
 }

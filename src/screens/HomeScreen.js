@@ -1,30 +1,22 @@
-import {
-  View,
-  Text,
-  SafeAreaView,
-  Image,
-  TextInput,
-  ScrollView,
-} from "react-native";
+import { View, SafeAreaView, Image, TextInput, ScrollView } from "react-native";
 import { MagnifyingGlassIcon } from "react-native-heroicons/outline";
 import { Header, Pets, Tags } from "../components/";
-import { useNavigation } from "@react-navigation/native";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { AppContext } from "../contexts/AppContext";
 import useAxios from "../hooks/useAxios";
 
 const HomeScreen = () => {
-  const navigation = useNavigation();
+  const [path, setPath] = useContext(AppContext);
+  const [records, setRecords] = useState([]);
 
   const { response, loading, error } = useAxios({
     method: "get",
-    url: "/post?limit=10",
+    url: path,
   });
-
-  const [data, setData] = useState([]);
 
   useEffect(() => {
     if (response !== null) {
-      setData(response);
+      setRecords(response);
     }
   }, [response]);
 
@@ -46,7 +38,7 @@ const HomeScreen = () => {
           <Tags />
         </View>
         <View className="px-2 pt-4 bg-white">
-          <Pets records={response} />
+          <Pets records={records.data} />
         </View>
       </View>
     </SafeAreaView>

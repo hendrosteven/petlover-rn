@@ -17,7 +17,7 @@ const PetCard = ({
   return (
     <TouchableOpacity
       className="bg-white shadow pt-2 mb-4"
-      onPress={() => navigation.navigate("Detail")}
+      onPress={() => navigation.navigate("Detail", { itemId: id })}
     >
       <View className="flex-row items-center pb-2 space-x-2 px-2">
         <Image

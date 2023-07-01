@@ -6,7 +6,7 @@ axios.defaults.headers = {
   "app-id": "649fdbf471c86975bb6343f9",
 };
 
-const useAxios = ({ url, method, body = null }) => {
+const useAxios = ({ url = "/post?limit=10", method, body = null }) => {
   const [response, setResponse] = useState(null);
   const [error, setError] = useState("");
   const [loading, setloading] = useState(true);
@@ -14,9 +14,10 @@ const useAxios = ({ url, method, body = null }) => {
   const fetchData = () => {
     axios[method](url, JSON.parse(body))
       .then((res) => {
-        setResponse(res.data.data);
+        setResponse(res.data);
       })
       .catch((err) => {
+        console.log(err);
         setError(err);
       })
       .finally(() => {

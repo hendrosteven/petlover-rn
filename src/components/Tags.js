@@ -19,7 +19,7 @@ const Tags = () => {
       <TagItem title="Animal" />
       <TagItem title="Canine" />
       <TagItem title="Puppy" />
-      <TagItem title="beach" />
+      <TagItem title="Beach" />
     </ScrollView>
   );
 };
