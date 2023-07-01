@@ -13,13 +13,13 @@ const Tags = () => {
       showsHorizontalScrollIndicator={false}
       className="flex-row bg-white"
     >
-      <TagItem title="Dog" />
-      <TagItem title="Golden retriever" />
-      <TagItem title="Cat" />
-      <TagItem title="Animal" />
-      <TagItem title="Canine" />
-      <TagItem title="Puppy" />
-      <TagItem title="Beach" />
+      <TagItem title="Dog" fromHome={true} />
+      <TagItem title="Golden retriever" fromHome={true} />
+      <TagItem title="Cat" fromHome={true} />
+      <TagItem title="Animal" fromHome={true} />
+      <TagItem title="Canine" fromHome={true} />
+      <TagItem title="Puppy" fromHome={true} />
+      <TagItem title="Beach" fromHome={true} />
     </ScrollView>
   );
 };

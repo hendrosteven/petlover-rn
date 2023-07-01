@@ -75,7 +75,7 @@ const DetailScreen = ({ route }) => {
             </View>
             <View className="flex-row px-2 pt-4">
               {data?.tags?.map((tag, index) => {
-                return <TagItem title={tag} key={index} />;
+                return <TagItem title={tag} key={index} fromHome={false} />;
               })}
             </View>
             <View className="flex-row items-center space-x-2 pt-4 pb-2 px-2">

@@ -7,7 +7,7 @@ import { AppContext } from "./src/contexts/AppContext";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-  const [pathValue, setPathValue] = useState("/post?limit=10");
+  const [pathValue, setPathValue] = useState("/post?limit=20");
   const [pageValue, setPagevalue] = useState(0);
   return (
     <AppContext.Provider

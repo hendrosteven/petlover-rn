@@ -9,15 +9,9 @@ const Pets = ({ records }) => {
   const [pathValue, setPathValue] = path;
 
   return (
-    <View className="bg-white">
+    <View className="bg-white" style={{ height: "92%" }}>
       <FlatList
         showsVerticalScrollIndicator={false}
-        onEndReachedThreshold={0.2}
-        onEndReached={() => {
-          setPageValue(pageValue + 1);
-          console.log(`PAGE: ${pageValue}`);
-          setPathValue(`/post?limit=10?page=${pageValue}`);
-        }}
         data={records}
         renderItem={({ item }) => (
           <PetCard
