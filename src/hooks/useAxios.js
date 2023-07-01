@@ -6,12 +6,13 @@ axios.defaults.headers = {
   "app-id": "649fdbf471c86975bb6343f9",
 };
 
-const useAxios = ({ url = "/post?limit=10", method, body = null }) => {
+const useAxios = ({ url, method, body = null }) => {
   const [response, setResponse] = useState(null);
   const [error, setError] = useState("");
   const [loading, setloading] = useState(true);
 
   const fetchData = () => {
+    console.log(url);
     axios[method](url, JSON.parse(body))
       .then((res) => {
         setResponse(res.data);

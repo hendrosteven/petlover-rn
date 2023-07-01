@@ -1,12 +1,23 @@
 import { View, ScrollView, FlatList } from "react-native";
-import React from "react";
+import React, { useState, useContext } from "react";
 import PetCard from "./PetCard";
+import { AppContext } from "../contexts/AppContext";
 
 const Pets = ({ records }) => {
+  const { path, page } = useContext(AppContext);
+  const [pageValue, setPageValue] = page;
+  const [pathValue, setPathValue] = path;
+
   return (
     <View className="bg-white">
       <FlatList
         showsVerticalScrollIndicator={false}
+        onEndReachedThreshold={0.2}
+        onEndReached={() => {
+          setPageValue(pageValue + 1);
+          console.log(`PAGE: ${pageValue}`);
+          setPathValue(`/post?limit=10?page=${pageValue}`);
+        }}
         data={records}
         renderItem={({ item }) => (
           <PetCard
