@@ -11,7 +11,7 @@ const Pets = ({ records }) => {
 
   const renderFooter = () => {
     return (
-      <View className="items-center pt-4 pb-4">
+      <View className="items-center pt-4 pb-8">
         <TouchableOpacity
           onPress={() => {
             const strPath = pathValue.split("&");
