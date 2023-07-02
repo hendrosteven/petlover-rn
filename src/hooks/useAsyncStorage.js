@@ -7,9 +7,8 @@ const useAsyncStorage = (key) => {
   async function getStoredItem(key) {
     try {
       const item = await AsyncStorage.getItem(key);
-      const value = item ? JSON.parse(item) : false;
-      setStoredValue(value);
-      console.log(`STORED_KEY: ${key} : ${value}`);
+      const data = item ? JSON.parse(item) : { like: false, likes: 0 };
+      setStoredValue(data);
     } catch (error) {
       console.log(error);
     }

@@ -11,6 +11,7 @@ import { Error, Header, Loading, Pets, Tags } from "../components/";
 import React, { useState, useEffect, useContext } from "react";
 import { AppContext } from "../contexts/AppContext";
 import useAxios from "../hooks/useAxios";
+import { useFocusEffect } from "@react-navigation/native";
 
 const HomeScreen = () => {
   const { path, page, records, isEmpty } = useContext(AppContext);

@@ -6,7 +6,7 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
-import { Error, Header, Loading, TagItem } from "../components";
+import { Error, Header, LikeV2, Loading, TagItem } from "../components";
 import {
   HeartIcon,
   HandThumbDownIcon,
@@ -76,7 +76,7 @@ const DetailScreen = ({ route }) => {
               return <TagItem title={tag} key={index} fromHome={false} />;
             })}
           </View>
-          <Like id={data?.id} likes={data?.likes} />
+          <LikeV2 id={data?.id} likes={data?.likes} />
         </ScrollView>
       )}
     </SafeAreaView>

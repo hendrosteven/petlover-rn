@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
-import Like from "./Like";
+import LikeV2 from "./LikeV2";
 
 const PetCard = ({
   id,
@@ -37,7 +37,7 @@ const PetCard = ({
           <Text className="px-2">{text}</Text>
         </View>
       </TouchableOpacity>
-      <Like id={id} likes={likes} />
+      <LikeV2 id={id} likes={likes} />
     </>
   );
 };
