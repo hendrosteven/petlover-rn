@@ -13,9 +13,11 @@ import { AppContext } from "../contexts/AppContext";
 import useAxios from "../hooks/useAxios";
 
 const HomeScreen = () => {
-  const { path, page } = useContext(AppContext);
+  const { path, page, records, isEmpty } = useContext(AppContext);
   const [pathValue, setPathValue] = path;
-  const [records, setRecords] = useState([]);
+  const [pageValue, setPageValue] = page;
+  const [recordsValue, setRecordsValue] = records;
+  const [isEmptyValue, setIsEmptyValue] = isEmpty;
 
   const { response, loading, error } = useAxios({
     method: "get",
@@ -23,11 +25,16 @@ const HomeScreen = () => {
   });
 
   useEffect(() => {
-    console.log(`RESPONSE: ${response?.data.length}`);
     if (response !== null) {
-      setRecords(response.data);
+      if (response.data.length <= 0) {
+        setIsEmptyValue(true);
+        return;
+      }
+      setIsEmptyValue(false);
+      setRecordsValue([...recordsValue, ...response.data]);
+      setPageValue(pageValue + 1);
+      console.log(`UPDATE PAGE: ${pageValue}`);
     }
-    console.log(`RECORD: ${records.length}`);
   }, [response]);
 
   return (
@@ -50,7 +57,7 @@ const HomeScreen = () => {
               <Tags />
             </View>
             <View className="px-2 pt-4 pb-4 bg-white">
-              <Pets records={records} />
+              <Pets records={recordsValue} />
             </View>
           </View>
         </>

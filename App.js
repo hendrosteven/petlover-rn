@@ -7,13 +7,18 @@ import { AppContext } from "./src/contexts/AppContext";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-  const [pathValue, setPathValue] = useState("/post?limit=20");
+  const [pathValue, setPathValue] = useState("/post?limit=20&page=0");
   const [pageValue, setPagevalue] = useState(0);
+  const [recordsValue, setRecordsValue] = useState([]);
+  const [isEmptyValue, setIsEmptyValue] = useState(false);
+
   return (
     <AppContext.Provider
       value={{
         path: [pathValue, setPathValue],
         page: [pageValue, setPagevalue],
+        records: [recordsValue, setRecordsValue],
+        isEmpty: [isEmptyValue, setIsEmptyValue],
       }}
     >
       <NavigationContainer>

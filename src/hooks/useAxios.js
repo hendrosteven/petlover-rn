@@ -12,7 +12,6 @@ const useAxios = ({ url, method, body = null }) => {
   const [loading, setloading] = useState(true);
 
   const fetchData = () => {
-    console.log(url);
     axios[method](url, JSON.parse(body))
       .then((res) => {
         setResponse(res.data);
