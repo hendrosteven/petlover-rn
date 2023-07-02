@@ -6,28 +6,26 @@ axios.defaults.headers = {
   "app-id": "649fdbf471c86975bb6343f9",
 };
 
-const useAxios = ({ url, method, body = null }) => {
+const useAxios = (axiosParams) => {
   const [response, setResponse] = useState(null);
   const [error, setError] = useState("");
-  const [loading, setloading] = useState(true);
+  const [loading, setLoading] = useState(true);
 
-  const fetchData = () => {
-    axios[method](url, JSON.parse(body))
-      .then((res) => {
-        setResponse(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-        setError(err);
-      })
-      .finally(() => {
-        setloading(false);
-      });
+  const fetchData = async (params) => {
+    try {
+      const result = await axios.request(params);
+      setResponse(result.data);
+    } catch (error) {
+      console.log(error);
+      setError(error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
-    fetchData();
-  }, [method, url, body]);
+    fetchData(axiosParams);
+  }, []);
 
   return { response, error, loading };
 };
