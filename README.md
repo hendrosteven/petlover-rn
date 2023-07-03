@@ -1,6 +1,6 @@
 # PetLover! Apps
 ## _React Native Demo Apps_
-Simple React Native Apps with Expo, Axios, Custom Hook, Asyncstorate & Context API.
+Simple React Native Apps with Expo, Axios, Custom Hook, Asyncstorage & Context API.
 
 ## Installation
 
