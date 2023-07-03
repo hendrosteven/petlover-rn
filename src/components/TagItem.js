@@ -16,7 +16,11 @@ const TagItem = ({ title, fromHome }) => {
       onPress={() => {
         setPageValue(0);
         setRecordsValue([]);
-        setPathValue(`/tag/${title.toLowerCase()}/post?limit=20&page=0`);
+        if (title.toLowerCase() == "all") {
+          setPathValue("/post?limit=20&page=0");
+        } else {
+          setPathValue(`/tag/${title.toLowerCase()}/post?limit=20&page=0`);
+        }
         if (!fromHome) {
           navigation.navigate("Home");
         }

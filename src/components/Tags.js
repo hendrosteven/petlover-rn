@@ -13,6 +13,7 @@ const Tags = () => {
       showsHorizontalScrollIndicator={false}
       className="flex-row bg-white"
     >
+      <TagItem title="All" fromHome={true} key="all" />
       <TagItem title="Dog" fromHome={true} key="dog" />
       <TagItem title="Golden retriever" fromHome={true} key="golden" />
       <TagItem title="Cat" fromHome={true} key="cat" />
