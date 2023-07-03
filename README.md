@@ -12,7 +12,7 @@ $ npm run start
 ```
 Scan to QR Code image with your Expo GO Apps!
 <div style="flex-row">
-  <img src="https://github.com/hendrosteven/petlover-rn/blob/main/screen-01.png" width="400">
-  <img src="https://github.com/hendrosteven/petlover-rn/blob/main/screen-02.png" width="400">
+  <img src="https://github.com/hendrosteven/petlover-rn/blob/main/screen-01.png" width="300">
+  <img src="https://github.com/hendrosteven/petlover-rn/blob/main/screen-02.png" width="300">
 </div>
 
