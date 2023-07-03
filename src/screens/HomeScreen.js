@@ -34,7 +34,6 @@ const HomeScreen = () => {
       setIsEmptyValue(false);
       setRecordsValue([...recordsValue, ...response.data]);
       setPageValue(pageValue + 1);
-      console.log(`UPDATE PAGE: ${pageValue}`);
     }
   }, [response]);
 
